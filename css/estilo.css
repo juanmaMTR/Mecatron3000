@@ -1,0 +1,45 @@
+/*
+    estilo.css
+    Fichero de estilo CSS del Juego Mecatron-3000
+    Juan Manuel Toscano Reyes <jtoscanoreyes.guadalupe@alumnado.fundacionloyola.net>
+*/
+body{
+    background-color: springgreen;
+    font-family: 'Merriweather', serif;
+    text-align: center;
+}
+/*Div pricipal centrado*/
+#divPrincipal{
+    width: 90%;
+    height: 600px;
+    margin: auto;
+    position: relative;
+    background-color: white;
+    border-radius: 5px;
+}
+/*Reglas para las palabras que vuelan*/
+.palabra{
+    border: 1px solid red;
+    width: max-content;
+    padding: 5px;
+    position: absolute;
+    border-radius: 5px;
+    background-color: pink;
+    color: white;
+}
+
+.palabra:nth-child(1){
+    top: 100px;
+    left: 120px;
+}
+.palabra:nth-child(2){
+    top: 200px;
+    left: 400px;
+}
+.palabra:nth-child(3){
+    top: 300px;
+    left: 700px;
+}
+.palabra span{
+    color: blue;
+}
