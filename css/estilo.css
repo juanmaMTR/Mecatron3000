@@ -27,19 +27,7 @@ body{
     background-color: pink;
     color: white;
 }
-
-.palabra:nth-child(1){
-    top: 100px;
-    left: 120px;
-}
-.palabra:nth-child(2){
-    top: 200px;
-    left: 400px;
-}
-.palabra:nth-child(3){
-    top: 300px;
-    left: 700px;
-}
+/*Span de las palabras que vas introduciendo por teclado*/
 .palabra span{
     color: blue;
 }

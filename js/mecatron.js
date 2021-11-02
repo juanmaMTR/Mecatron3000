@@ -27,13 +27,51 @@ class Juego{
         this.vista.div=this.divPrincipal
 
         this.generadorPalabras=window.setInterval(this.generarPalabra.bind(this),4000)
-        this.animador=window.setInterval(this.vista.moverPalabras.bind(this.vista),100)
+        this.animador=window.setInterval(this.vista.moverPalabras.bind(this.vista),300)
+
+        window.onkeypress=this.pulsar.bind(this)
         
     }
     generarPalabra(){
         let nuevaPalabra=this.modelo.crearPalabra()
         this.vista.dibujar(nuevaPalabra)
     }
+
+    pulsar(evento){
+        let letraPulsada=evento.key
+        //console.log('Has pulsado '+letraPulsada);
+
+        //Busco todas las palabras
+        let palabras=this.divPrincipal.querySelectorAll('.palabra')
+        for(let palabra of palabras){
+            //console.log(palabra.innerHTML);
+            let span=palabra.children.item(0)
+            let nodoTexto=palabra.childNodes[1]
+            let textoRestante=nodoTexto.nodeValue
+            let primeraLetraTextoRestante=textoRestante.charAt(0)
+
+            //Meto la palabra pulsada en el nodo de texto
+            if(letraPulsada==primeraLetraTextoRestante){
+                span.textContent += letraPulsada
+                nodoTexto.nodeValue= textoRestante.substring(1)
+                //Compruebo si he rellgenado la palabra y la quito y sumo punto
+                if(nodoTexto.nodeValue.length==0){
+                    //this.vista.explotar()
+                    palabra.remove()
+                    //this.modelo.sumarPunto()
+
+                }
+
+            }else{
+                //Ha fallado, repongo el texto de la palabra
+                nodoTexto.nodeValue=span.textContent+textoRestante
+                span.textContent=""
+            }
+            
+           
+        }
+    }
+
 }
 /**
  * Clase Vista que muestra el juego
@@ -50,6 +88,8 @@ class Vista{
         //<div class=palabra>Meca</div>
         let div=document.createElement('div')
         this.div.appendChild(div)
+        let span=document.createElement('span')
+        div.appendChild(span)
         div.appendChild(document.createTextNode(nuevaPalabra))
         div.classList.add('palabra')
 
@@ -71,12 +111,12 @@ class Vista{
         //TODO: Si ha llegado al suelo..
         for(let palabra of palabras){
             if(palabra.style.top>='600px'){
-                explotar()
+                this.explotar()
             }
         }
     }
     explotar(){
-        
+        console.log('BUUM');
     }
 }
 /**
