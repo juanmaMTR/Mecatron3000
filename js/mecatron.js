@@ -1,6 +1,5 @@
 /** 
-    Mecatron.js
-    Controlador principal del Juego Mecatron-3000
+    @file Controlador principal del Juego Mecatron-3000
     @author Juan Manuel Toscano Reyes <jtoscanoreyes.guadalupe@alumnado.fundacionloyola.net>
     @License GPL v3 2021
 */
